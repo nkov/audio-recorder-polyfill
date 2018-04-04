@@ -1,6 +1,6 @@
 {
-  "name": "audio-recorder-polyfill",
-  "version": "0.1.1",
+  "name": "audio-recorder-polyfill-kaliatech",
+  "version": "0.1.2",
   "description": "MediaRecorder polyfill to record audio in Edge and Safari",
   "keywords": [
     "mediarecorder",
@@ -16,7 +16,15 @@
   ],
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
-  "repository": "ai/audio-recorder-polyfill",
+  "contributors": [
+    "kaliatech <josh@jgstechnical.com>",
+    {
+      "name": "Josh Sanderson",
+      "email": "josh@jgstechnical.com",
+      "url": "https://jgstechnical.com"
+    }
+  ],
+  "repository": "kaliatech/audio-recorder-polyfill",
   "devDependencies": {
     "bytes": "^3.0.0",
     "docdash": "^0.4.0",
