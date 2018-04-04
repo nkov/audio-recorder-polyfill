@@ -61,7 +61,8 @@ MediaRecorder.prototype = {
    * @param {number} [timeslice] The milliseconds to record into each `Blob`.
    *                             If this parameter isn’t included, single `Blob`
    *                             will be recorded.
-   *
+   * @param {object} [context]   ios/safari only - Audio context created in user click ctx.
+   * @param {object} [processor] ios/safari only - Script processor created in user click ctx.
    * @return {undefined}
    *
    * @example
@@ -69,13 +70,21 @@ MediaRecorder.prototype = {
    *   recorder.start()
    * })
    */
-  start: function start (timeslice) {
+  start: function start (timeslice, context, processor) {
     if (this.state === 'inactive') {
       this.state = 'recording'
 
-      this.context = new AudioContext()
+      if (context) {
+        this.context = context;
+      }
+      else {
+        this.context = new AudioContext()
+      }
+
       var input = this.context.createMediaStreamSource(this.stream)
-      var processor = this.context.createScriptProcessor(2048, 1, 1)
+      if (!processor) {
+        processor = this.context.createScriptProcessor(2048, 1, 1)
+      }
 
       var recorder = this
       processor.onaudioprocess = function (e) {
